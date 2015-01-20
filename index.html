@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>Orbital</title>
+
+    <style>
+      html, body, {
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+        background-color: black;
+      }
+
+      canvas {
+        padding: 0;
+        background-color: #ccc;
+        background-size: auto 100%;
+        margin: auto;
+        margin-top: 30px;
+      }
+
+    </style>
+  </head>
+
+<body>
+
+
+<canvas id="game-canvas"></canvas>
+<script src="lib/keymaster.js"></script>
+<script src="lib/movingObject.js"></script>
+<script src="lib/util.js"></script>
+<script src="lib/blackHole.js"></script>
+<script src="lib/ship.js"></script>
+<script src="lib/launchpad.js"></script>
+<script src="lib/target.js"></script>
+<script src="lib/game.js"></script>
+<script src="lib/gameView.js"></script>
+
+<script charset="utf-8">
+  var canvas = document.getElementById("game-canvas");
+  canvas.height = Orbital.Game.DIM_Y;
+  canvas.width = Orbital.Game.DIM_X;
+  var ctx = canvas.getContext('2d');
+  var game = new Orbital.Game();
+  var gameView = new Orbital.GameView(game,ctx);
+
+  var getMousePos = function (canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: (evt.clientX-rect.left)/(rect.right-rect.left)*canvas.width,
+      y: (evt.clientY-rect.top)/(rect.bottom-rect.top)*canvas.height
+    };
+  };
+
+  canvas.addEventListener("mousedown", function (event) {
+    var mousePos = getMousePos(canvas, event);
+    var x = mousePos.x;
+    var y = mousePos.y;
+    game.launchpad.launchShip(x,y);
+  }, false)
+  gameView.start();
+</script>
+</body>
