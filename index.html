@@ -1,30 +1,25 @@
 <html>
   <head>
     <title>Orbital</title>
-
-    <style>
-      html, body, {
-        padding: 0px;
-        margin: 0px;
-        text-align: center;
-        background-color: black;
-      }
-
-      canvas {
-        padding: 0;
-        background-color: #ccc;
-        background-size: auto 100%;
-        margin: auto;
-        margin-top: 30px;
-      }
-
-    </style>
+    <link href='http://fonts.googleapis.com/css?family=Amaranth:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/orbital.css">
   </head>
 
 <body>
 
-
+<h1>Orbital</h1>
 <canvas id="game-canvas"></canvas>
+<h3>Instructions</h3>
+<ul>
+  <li>1. Your LAUNCHPAD is represented by a green circle on the screen.</li>
+  <li>2. To launch a blue ship, click anywhere on the canvas.</li>
+  <li>3. The blue ship will leave the launchpad based on where you click!</li>
+  <li>4. Your click determines the direction and speed of the ball!</li>
+  <li>5. Try to get a blue ship to touch the red TARGET.</li>
+  <li>HINT: Your ships can bounce off of each other! This is required for some levels!</li>
+</ul>
+
+</body>
 <script src="lib/keymaster.js"></script>
 <script src="lib/movingObject.js"></script>
 <script src="lib/util.js"></script>
@@ -59,4 +54,3 @@
   }, false)
   gameView.start();
 </script>
-</body>
